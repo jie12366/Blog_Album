@@ -71,7 +71,7 @@ def compress(choose, des_dir, src_dir, file_list):
 def compress_photo():
     '''调用压缩图片的函数
     '''
-    src_dir, des_dir = "../Blog_Album/photos/", "../Blog_Album/min_photos/"
+    src_dir, des_dir = "photos/", "min_photos/"
     
     if directory_exists(src_dir):
         if not directory_exists(src_dir):
@@ -97,7 +97,7 @@ def handle_photo():
     -----------
     最后将data.json文件存到博客的source/photos文件夹下
     '''
-    src_dir, des_dir = "../Blog_Album/photos/", "../Blog_Album/min_photos/"
+    src_dir, des_dir = "photos/", "min_photos/"
     file_list = list_img_file(src_dir)
     list_info = []
     file_list.sort(key=lambda x: x.split('_')[0])   # 按照日期排序
@@ -131,7 +131,7 @@ def handle_photo():
             list_info[-1]['arr']['type'].append('image')
     list_info.reverse()  # 翻转
     final_dict = {"list": list_info}
-    with open("source/photos/data.json","w") as fp:
+    with open("../folder/source/photos/data.json","w") as fp:
         json.dump(final_dict, fp)
 
 def cut_photo():
@@ -140,7 +140,7 @@ def cut_photo():
     ----------
     调用Graphics类中的裁剪算法，将src_dir目录下的文件进行裁剪（裁剪成正方形）
     """
-    src_dir = "../Blog_Album/photos/"
+    src_dir = "photos/"
     if directory_exists(src_dir):
         if not directory_exists(src_dir):
             make_directory(src_dir)
